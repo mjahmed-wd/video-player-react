@@ -54,7 +54,7 @@ video {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.center__play__btn{
+.center__play__btn {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -86,7 +86,7 @@ input[type="range"] {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   height: 4px;
-  width: 350px;
+  width: 300px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -108,8 +108,14 @@ input[type="range"]::-moz-range-progress {
   text-align: center;
   font-size: 16px;
 }
+.mute__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-.mute-btn , button{
+.mute-btn,
+button {
   background: none;
   border: none;
   outline: none;
@@ -122,28 +128,34 @@ input[type="range"]::-moz-range-progress {
   font-size: 20px;
 }
 
-
-input[type='range'], 
-input[type='range']:focus, 
-input[type='range']:active, 
-input[type='range']::-moz-focus-inner, 
-input[type='range']:-moz-focusring {
-    border: 0;
-    outline: none;
+input[type="range"],
+input[type="range"]:focus,
+input[type="range"]:active,
+input[type="range"]::-moz-focus-inner,
+input[type="range"]:-moz-focusring {
+  border: 0;
+  outline: none;
 }
-input[type='range']::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   /* display: none; */
   visibility: hidden;
-    -webkit-appearance: none;
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
-    background: #fff;
-    cursor: pointer;
-    border: 1px solid #000000;
-}
-input[type='range']::-webkit-tap-highlight-color {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
   background: #fff;
+  cursor: pointer;
+  border: 1px solid #000000;
+}
+input[type="range"]::-webkit-tap-highlight-color {
+  background: #fff;
+}
+
+input[type="range"][orient="vertical"] {
+  writing-mode: bt-lr; /* IE */
+  -webkit-appearance: slider-vertical; /* WebKit */
+  width: 4px;
+  height: 50px;
 }
 
 select {

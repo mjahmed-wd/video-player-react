@@ -30,6 +30,7 @@ const App = () => {
     togglePlay,
     handleOnTimeUpdate,
     handleVideoProgress,
+    handleSoundProgress,
     handleVideoSpeed,
     toggleMute,
     skipVideo,
@@ -142,9 +143,9 @@ const App = () => {
                 zIndex: "-1",
               }}
             ></div>
-          </div> 
-          <span>{ playerState?.currentTime+ "/"+ playerState?.duration}</span>
-          <div className="mute__btn">
+          </div>
+          <span>{playerState?.currentTime + "/" + playerState?.duration}</span>
+          <div className="mute__wrapper">
             <button className="mute-btn" onClick={toggleMute}>
               <Lottie
                 options={speakerOptions}
@@ -154,6 +155,28 @@ const App = () => {
                 direction={playerState.isMuted ? 1 : -1}
               />
             </button>
+            <div style={{ position: "relative" }}>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={playerState.soundProgress}
+                onChange={(e) => handleSoundProgress(e)}
+                style={{ cursor: "pointer", width: "50px" }}
+              />
+              <div
+                style={{
+                  width: `${playerState.soundProgress*100}%`,
+                  height: "4px",
+                  position: "absolute",
+                  top: "50%",
+                  backgroundColor: "white",
+                  transform: "translateY(50%)",
+                  zIndex: "-1",
+                }}
+              ></div>
+            </div>
           </div>
           <div className="skip__10s d-flex">
             <button

@@ -4,6 +4,7 @@ const useVideoPlayer = (videoElement) => {
   const [playerState, setPlayerState] = useState({
     isPlaying: false,
     progress: 0,
+    soundProgress: 0,
     speed: 1,
     isMuted: false,
     currentTime: 0,
@@ -42,6 +43,25 @@ const useVideoPlayer = (videoElement) => {
       ...playerState,
       progress: manualChange,
     });
+  };
+
+  const handleSoundProgress = (event) => {
+    const soundChange = Number(event.target.value);
+    videoElement.current.volume = soundChange;
+    console.log(soundChange);
+    if (soundChange === 0) {
+      setPlayerState({
+        ...playerState,
+        isMuted: true,
+        soundProgress: soundChange,
+      });
+    } else {
+      setPlayerState({
+        ...playerState,
+        isMuted: false,
+        soundProgress: soundChange,
+      });
+    }
   };
 
   const handleVideoSpeed = (event) => {
@@ -92,6 +112,7 @@ const useVideoPlayer = (videoElement) => {
     togglePlay,
     handleOnTimeUpdate,
     handleVideoProgress,
+    handleSoundProgress,
     handleVideoSpeed,
     toggleMute,
     skipVideo,
