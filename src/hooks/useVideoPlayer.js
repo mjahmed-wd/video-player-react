@@ -6,6 +6,8 @@ const useVideoPlayer = (videoElement) => {
     progress: 0,
     speed: 1,
     isMuted: false,
+    currentTime: 0,
+    duration: 0,
   });
 
   const togglePlay = () => {
@@ -27,6 +29,8 @@ const useVideoPlayer = (videoElement) => {
     setPlayerState({
       ...playerState,
       progress,
+      currentTime: secondsToTime(videoElement.current.currentTime),
+      duration: secondsToTime(videoElement.current.duration),
     });
   };
 
@@ -59,6 +63,23 @@ const useVideoPlayer = (videoElement) => {
   const skipVideo = (time = 15) => {
     videoElement.current.currentTime += time;
   };
+
+  function secondsToTime(e) {
+    var h = Math.floor(e / 3600)
+        .toString()
+        .padStart(2, "0"),
+      m = Math.floor((e % 3600) / 60)
+        .toString()
+        .padStart(2, "0"),
+      s = Math.floor(e % 60)
+        .toString()
+        .padStart(2, "0");
+
+    return h === "00" ? m + ":" + s : h + ":" + m + ":" + s;
+    //return `${h}:${m}:${s}`;
+  }
+
+  // console.log(secondsToTime(7735));
 
   useEffect(() => {
     playerState.isMuted
