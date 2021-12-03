@@ -34,7 +34,18 @@ const App = () => {
     handleVideoSpeed,
     toggleMute,
     skipVideo,
+    handleKeyPress,
   } = useVideoPlayer(videoElement);
+  // const targetKey = document.addEventListener("keydown", useKeyPress)
+
+  useEffect(() => {
+    window.addEventListener("keydown", (e) => handleKeyPress(e));
+    return () => {
+      window.removeEventListener("keydown", (e) => handleKeyPress(e));
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="container">
       <div className="video-wrapper">
@@ -167,7 +178,7 @@ const App = () => {
               />
               <div
                 style={{
-                  width: `${playerState.soundProgress*100}%`,
+                  width: `${playerState.soundProgress * 100}%`,
                   height: "4px",
                   position: "absolute",
                   top: "50%",
@@ -189,7 +200,6 @@ const App = () => {
             </button>
             <button
               onClick={() => {
-                console.log(`forward`);
                 skipVideo(10);
                 setBtnShow({ ...btnShow, forwards: true });
               }}

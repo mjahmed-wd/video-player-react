@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+// import { useKeyPress } from "./useKeyPress";
 
 const useVideoPlayer = (videoElement) => {
+  // const happyPress = useKeyPress("h");
   const [playerState, setPlayerState] = useState({
     isPlaying: false,
     progress: 0,
-    soundProgress: 0,
+    soundProgress: 1,
     speed: 1,
     isMuted: false,
     currentTime: 0,
@@ -77,10 +79,11 @@ const useVideoPlayer = (videoElement) => {
     setPlayerState({
       ...playerState,
       isMuted: !playerState.isMuted,
+      // soundProgress: !playerState.isMuted ? 0 : videoElement.current.volume,
     });
   };
 
-  const skipVideo = (time = 15) => {
+  const skipVideo = (time = 10) => {
     videoElement.current.currentTime += time;
   };
 
@@ -99,6 +102,45 @@ const useVideoPlayer = (videoElement) => {
     //return `${h}:${m}:${s}`;
   }
 
+  const handleKeyPress = (event) => {
+    if (event.code === "Space") {
+      setPlayerState({
+        ...playerState,
+        isPlaying: videoElement.current.paused,
+        currentTime: secondsToTime(videoElement.current.currentTime),
+        duration: secondsToTime(videoElement.current.duration),
+      });
+    } else if (event.code === "ArrowRight") {
+      videoElement.current.currentTime += 10;
+    } else if (event.code === "ArrowLeft") {
+      videoElement.current.currentTime -= 10;
+    } else if (event.code === "KeyM") {
+      setPlayerState({
+        ...playerState,
+        isMuted: videoElement.current.isMuted,
+        // isPlaying: videoElement.current.paused,
+        soundProgress: videoElement.current.isMuted
+          ? 0
+          : videoElement.current.volume,
+        currentTime: secondsToTime(videoElement.current.currentTime),
+        duration: secondsToTime(videoElement.current.duration),
+      });
+    // } else if (event.code === "ArrowDown") {
+    //   videoElement.current.volume >= 0.1
+    //     ? (videoElement.current.volume -= 0.1)
+    //     : (videoElement.current.volume = 0);
+    //   setPlayerState({
+    //     soundProgress: videoElement.current.isMuted
+    //       ? 0
+    //       : videoElement.current.volume,
+    //     currentTime: secondsToTime(videoElement.current.currentTime),
+    //     duration: secondsToTime(videoElement.current.duration),
+    //   });
+    } else {
+      console.log("other key pressed", event.code);
+    }
+  };
+
   // console.log(secondsToTime(7735));
 
   useEffect(() => {
@@ -116,6 +158,7 @@ const useVideoPlayer = (videoElement) => {
     handleVideoSpeed,
     toggleMute,
     skipVideo,
+    handleKeyPress,
   };
 };
 
