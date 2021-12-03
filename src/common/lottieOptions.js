@@ -1,9 +1,9 @@
-import playBtn from "../files/playBtn.json";
+// import playBtn from "../files/playBtn.json";
 import playBtnBig from "../files/playBtnBig.json";
 import playBtn1 from "../files/playBtn1.json";
 import forwardedTopAnimation from "../files/forwardedTopAnimation.json";
 import backwordTopBtn from "../files/backwordTopBtn.json";
-import sound from "../files/speaker.json";
+// import sound from "../files/speaker.json";
 import sound1 from "../files/speaker1.json";
 
 export const lottieOptions = {
