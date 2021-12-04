@@ -2,8 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Lottie from "react-lottie";
 import { useEffect, useRef, useState } from "react";
-import video from "./files/video.mp4";
-import thumbnail from "./files/Big_Buck_Bunny_loves_Creative_Commons.png";
 import useVideoPlayer from "./hooks/useVideoPlayer";
 import {
   backwordOptions,
@@ -15,7 +13,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo, faRedo } from "@fortawesome/free-solid-svg-icons";
 
-const App = () => {
+const VideoContainer = ({thumbnail, videoLink}) => {
   const videoElement = useRef(null);
 
   const [btnShow, setBtnShow] = useState({
@@ -198,4 +196,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default VideoContainer;

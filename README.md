@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is live on [here](https://video-player-jubair.netlify.app).
 
 ## Available Scripts
 
