@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
-This project is live on [here](https://video-player-jubair.netlify.app).
+This project is live on [here](https://video-player-jubair.netlify.app).y
+
+# Project Design Pattern
 
 >## We are not going to use any external dependencies, we will only use open sourced video for our player.
 
