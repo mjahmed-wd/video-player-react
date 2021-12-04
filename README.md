@@ -1,5 +1,5 @@
 
-This project is live on [here](https://video-player-jubair.netlify.app).y
+This project is live on [here](https://video-player-jubair.netlify.app).
 
 # Project Design Pattern
 >## We are not going to use any external dependencies, we will only use open sourced video for our player.
