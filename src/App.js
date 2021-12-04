@@ -108,7 +108,6 @@ const App = () => {
                 options={playOptions}
                 height={25}
                 width={25}
-                // isPaused={isPaused}
                 direction={playerState.isPlaying ? 1 : -1}
               />
             </button>
@@ -141,7 +140,6 @@ const App = () => {
                 options={speakerOptions}
                 height={25}
                 width={25}
-                // isPaused={isPaused}
                 direction={playerState.isMuted ? 1 : -1}
               />
             </button>
